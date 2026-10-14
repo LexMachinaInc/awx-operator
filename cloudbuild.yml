@@ -9,7 +9,7 @@ steps:
         "--platform",
         "linux/arm64,linux/amd64",
         "-t",
-        "us-central1-docker.pkg.dev/civic-origin-380/lxm-docker/awx-operator:2.19.1-lxm",
+        "us-central1-docker.pkg.dev/civic-origin-380/lxm-docker/awx-operator:20261014-lxm",
         "--push",
         ".",
       ]
