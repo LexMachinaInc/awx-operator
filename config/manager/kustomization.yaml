@@ -14,4 +14,4 @@ kind: Kustomization
 images:
 - name: controller
   newName: us-central1-docker.pkg.dev/civic-origin-380/lxm-docker/awx-operator
-  newTag: latest
+  newTag: 20261119-lxm
