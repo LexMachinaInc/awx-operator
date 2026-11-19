@@ -3,7 +3,7 @@
 # To re-generate a bundle for another specific version without changing the standard setup, you can:
 # - use the VERSION as arg of the bundle target (e.g make bundle VERSION=0.0.2)
 # - use environment variables to overwrite this value (e.g export VERSION=0.0.2)
-VERSION ?= 20261014-lxm
+VERSION ?= 20261119-lxm
 
 # CHANNELS define the bundle channels used in the bundle.
 # Add a new line here if you would like to change its default config. (E.g CHANNELS = "candidate,fast,stable")
@@ -241,3 +241,11 @@ catalog-push: ## Push a catalog image.
 -include makefiles/operator.mk
 # Shared dev workflow targets (synced across all operator repos)
 -include makefiles/common.mk
+
+.PHONY: gen-resources
+gen-resources: kustomize ## Generate resources for controller and print to stdout
+	@cd config/manager && $(KUSTOMIZE) edit set image controller=${IMG}
+	@cd config/default && $(KUSTOMIZE) edit set namespace ${NAMESPACE}
+	@$(KUSTOMIZE) build config/default
+	
+
